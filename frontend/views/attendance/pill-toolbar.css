@@ -1,0 +1,221 @@
+/*
+ * 胶囊表单 / 按钮风格（与「子账号管理」一致），全局样式，在 main.ts 中引入一次。
+ * 用法：给页面根节点、el-dialog、el-drawer 加上 class="pill-bar"，
+ *       其内部的输入框、日期选择、下拉、按钮、开关等都会套用该风格。
+ * 选择器写成 .pill-bar.pill-bar 是为了压过页面里 scoped 样式的优先级；
+ * 不带 pill-bar 的区域完全不受影响。
+ */
+
+/* ---------- 输入框 / 日期选择 / 下拉选择：胶囊输入框 ---------- */
+.pill-bar.pill-bar .el-input__wrapper,
+.pill-bar.pill-bar .el-select__wrapper {
+  box-sizing: border-box;
+  min-height: 34px;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 0 0 1px #dce7ef inset, 0 2px 8px #1b3a3112;
+  transition: box-shadow 0.2s;
+}
+
+.pill-bar.pill-bar .el-input__wrapper:hover,
+.pill-bar.pill-bar .el-select__wrapper:hover,
+.pill-bar.pill-bar .el-select__wrapper.is-hovering:not(.is-focused) {
+  box-shadow: 0 0 0 1px #b9cfd8 inset, 0 2px 8px #1b3a3118;
+}
+
+.pill-bar.pill-bar .el-input__wrapper.is-focus,
+.pill-bar.pill-bar .el-select__wrapper.is-focused {
+  box-shadow: 0 0 0 1.5px #279c8a inset, 0 4px 12px #279c8a26;
+}
+
+.pill-bar.pill-bar .el-input.is-disabled .el-input__wrapper,
+.pill-bar.pill-bar .el-select__wrapper.is-disabled {
+  background: #f4f7f8;
+  box-shadow: 0 0 0 1px #e6edf1 inset;
+}
+
+.pill-bar.pill-bar .el-input__prefix,
+.pill-bar.pill-bar .el-input__prefix .el-icon,
+.pill-bar.pill-bar .el-input__icon {
+  color: #7a93a3;
+}
+
+/* 多行文本框：圆角卡片风，不做胶囊 */
+.pill-bar.pill-bar .el-textarea__inner {
+  border-radius: 16px;
+  padding: 8px 16px;
+  box-shadow: 0 0 0 1px #dce7ef inset, 0 2px 8px #1b3a3112;
+  transition: box-shadow 0.2s;
+}
+
+.pill-bar.pill-bar .el-textarea__inner:hover {
+  box-shadow: 0 0 0 1px #b9cfd8 inset, 0 2px 8px #1b3a3118;
+}
+
+.pill-bar.pill-bar .el-textarea__inner:focus {
+  box-shadow: 0 0 0 1.5px #279c8a inset, 0 4px 12px #279c8a26;
+}
+
+/* 数字输入框：胶囊 + 右侧加减按钮 */
+.pill-bar.pill-bar .el-input-number .el-input__wrapper {
+  padding-left: 42px;
+  padding-right: 42px;
+}
+
+.pill-bar.pill-bar .el-input-number.is-controls-right .el-input__wrapper {
+  padding-left: 16px;
+  padding-right: 46px;
+}
+
+.pill-bar.pill-bar .el-input-number.is-controls-right .el-input-number__increase {
+  border-radius: 0 999px 0 0;
+}
+
+.pill-bar.pill-bar .el-input-number.is-controls-right .el-input-number__decrease {
+  border-radius: 0 0 999px 0;
+}
+
+.pill-bar.pill-bar .el-input-number:not(.is-controls-right) .el-input-number__increase {
+  border-radius: 0 999px 999px 0;
+}
+
+.pill-bar.pill-bar .el-input-number:not(.is-controls-right) .el-input-number__decrease {
+  border-radius: 999px 0 0 999px;
+}
+
+/* ---------- 按钮：浅色渐变胶囊，主按钮为青紫渐变 ---------- */
+.pill-bar.pill-bar .el-button:not(.fine-batch-add-btn) {
+  height: 34px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid #dce7ef;
+  background: linear-gradient(120deg, #edf7f4, #e9edff);
+  color: #385b77;
+  font-weight: 600;
+  box-shadow: none;
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+}
+
+.pill-bar.pill-bar .el-button.el-button--small:not(.fine-batch-add-btn) {
+  height: 30px;
+  padding: 0 14px;
+  font-size: 13px;
+}
+
+/* 文字 / 链接按钮（表格操作列、小链接）：紧凑胶囊 */
+.pill-bar.pill-bar .el-button.is-link:not(.fine-batch-add-btn),
+.pill-bar.pill-bar .el-button.is-text:not(.fine-batch-add-btn) {
+  height: 28px;
+  padding: 0 12px;
+  font-size: 13px;
+  margin: 2px 4px 2px 0;
+}
+
+.pill-bar.pill-bar .el-button + .el-button {
+  margin-left: 0;
+}
+
+.pill-bar.pill-bar .el-button:not(.fine-batch-add-btn):hover,
+.pill-bar.pill-bar .el-button:not(.fine-batch-add-btn):focus-visible {
+  border-color: #b9cfd8;
+  color: #205c50;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px #1b3a3118;
+}
+
+.pill-bar.pill-bar .el-button.el-button--primary:not(.fine-batch-add-btn) {
+  border: 0;
+  color: #fff;
+  background: linear-gradient(120deg, #279c8a, #6a79d7);
+  box-shadow: 0 4px 12px #279c8a40;
+}
+
+.pill-bar.pill-bar .el-button.el-button--primary:not(.fine-batch-add-btn):hover,
+.pill-bar.pill-bar .el-button.el-button--primary:not(.fine-batch-add-btn):focus-visible {
+  color: #fff;
+  box-shadow: 0 6px 16px #279c8a55;
+}
+
+.pill-bar.pill-bar .el-button.el-button--success:not(.fine-batch-add-btn) {
+  border: 0;
+  color: #fff;
+  background: linear-gradient(120deg, #279c8a, #43b8a0);
+  box-shadow: 0 4px 12px #279c8a40;
+}
+
+.pill-bar.pill-bar .el-button.el-button--success:not(.fine-batch-add-btn):hover,
+.pill-bar.pill-bar .el-button.el-button--success:not(.fine-batch-add-btn):focus-visible {
+  color: #fff;
+  box-shadow: 0 6px 16px #279c8a55;
+}
+
+.pill-bar.pill-bar .el-button.el-button--warning:not(.fine-batch-add-btn) {
+  border: 1px solid #f1deb8;
+  color: #b87a14;
+  background: linear-gradient(120deg, #fffaf0, #fff3dc);
+}
+
+.pill-bar.pill-bar .el-button.el-button--warning:not(.fine-batch-add-btn):hover,
+.pill-bar.pill-bar .el-button.el-button--warning:not(.fine-batch-add-btn):focus-visible {
+  border-color: #e6c37a;
+  color: #9a640a;
+  box-shadow: 0 4px 12px #e6a23c33;
+}
+
+.pill-bar.pill-bar .el-button.el-button--danger:not(.fine-batch-add-btn) {
+  border: 1px solid #f3d3d6;
+  color: #d64550;
+  background: linear-gradient(120deg, #fff4f4, #ffe9ee);
+}
+
+.pill-bar.pill-bar .el-button.el-button--danger:not(.fine-batch-add-btn):hover,
+.pill-bar.pill-bar .el-button.el-button--danger:not(.fine-batch-add-btn):focus-visible {
+  border-color: #e9a9af;
+  color: #c0343f;
+  box-shadow: 0 4px 12px #d6455033;
+}
+
+.pill-bar.pill-bar .el-button.is-disabled:not(.fine-batch-add-btn),
+.pill-bar.pill-bar .el-button.is-disabled:not(.fine-batch-add-btn):hover {
+  opacity: 0.5;
+  transform: none;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.pill-bar.pill-bar .el-button .el-icon {
+  margin-right: 2px;
+}
+
+/* ---------- 分裂按钮（el-dropdown split-button）与按钮组 ---------- */
+.pill-bar.pill-bar .el-dropdown.action-button {
+  padding: 0;
+  border-radius: 999px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.pill-bar.pill-bar .el-button-group > .el-button:first-child:not(:last-child) {
+  border-radius: 999px 0 0 999px;
+  padding-left: 18px;
+}
+
+.pill-bar.pill-bar .el-button-group > .el-button:last-child:not(:first-child) {
+  border-radius: 0 999px 999px 0;
+  padding-left: 12px;
+  padding-right: 14px;
+}
+
+.pill-bar.pill-bar .el-button-group > .el-button--primary:not(:last-child) {
+  border-right: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+/* ---------- 开关：勾选态使用青紫渐变 ---------- */
+.pill-bar.pill-bar .el-switch.is-checked .el-switch__core {
+  background: linear-gradient(120deg, #279c8a, #6a79d7);
+  border-color: transparent;
+}
